@@ -26,33 +26,33 @@ jobs:
       - name: Print the Helm client version information
         run: helm version
         
-    - id: 'auth'
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v1'
-      with:
-        token_format: 'access_token'
-        workload_identity_provider: projects/118785805795/locations/global/workloadIdentityPools/wif-test/providers/gitaction-test
-        service_account: 'test-gcp@erudite-pod-391005.iam.gserviceaccount.com'
-        audience: 'https://github.com/qpqpqp1224/test'      
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          token_format: 'access_token'
+          workload_identity_provider: projects/118785805795/locations/global/workloadIdentityPools/wif-test/providers/gitaction-test
+          service_account: 'test-gcp@erudite-pod-391005.iam.gserviceaccount.com'
+          audience: 'https://github.com/qpqpqp1224/test'      
       
-    - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v1.1.1
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1.1.1
 
-    - name: Use gcloud CLI
-      run: gcloud info
+      - name: Use gcloud CLI
+        run: gcloud info
       
-    - name: Get Kubernetes config
-      run: gcloud container clusters get-credentials test --region asia-northeast3 --project erudite-pod-391005
+      - name: Get Kubernetes config
+        run: gcloud container clusters get-credentials test --region asia-northeast3 --project erudite-pod-391005
       
-    - name: Examine the chart for possible issues    
-      run: helm lint ${{ env.CHART_PATH }}
+      - name: Examine the chart for possible issues    
+        run: helm lint ${{ env.CHART_PATH }}
 
-     - name: "[MANIFESTS] Dry-run the release"
-      run: |
-        helm upgrade ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} \
-           --namespace ${{ env.NAMESPACE }} \
-           --install \
-           --dry-run
+      - name: "[MANIFESTS] Dry-run the release"
+        run: |
+          helm upgrade ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} \
+             --namespace ${{ env.NAMESPACE }} \
+             --install \
+             --dry-run
 
   deploy:
     needs: prepare
