@@ -88,6 +88,8 @@ jobs:
 
       - name: Get Kubernetes config
         run: gcloud container clusters get-credentials test --region asia-northeast3 --project erudite-pod-391005
+        
+      - name: Examine the chart for possible issues          
         run: helm lint ${{ env.CHART_PATH }}
 
       - name: Upgrade the release
