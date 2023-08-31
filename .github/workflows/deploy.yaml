@@ -22,8 +22,8 @@ env:
   NAMESPACE: default
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-  jobs:
-    prepare:
+jobs:
+  prepare:
     permissions:
       id-token: write
       contents: read
