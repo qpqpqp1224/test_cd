@@ -20,11 +20,9 @@ env:
   CHART_PATH: helm-helloworld/
   RESEASE_NAME: test-hello
   NAMESPACE: default
-  
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
-  setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
+  prepare:
     permissions:
       id-token: write
       contents: read
