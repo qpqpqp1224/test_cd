@@ -33,7 +33,7 @@ jobs:
           token_format: 'access_token'
           workload_identity_provider: projects/118785805795/locations/global/workloadIdentityPools/wif-test/providers/gitaction-test
           service_account: 'test-gcp@erudite-pod-391005.iam.gserviceaccount.com'
-          audience: 'https://github.com/qpqpqp1224/test'      
+          audience: 'https://github.com/qpqpqp1224/test_cd'      
       
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1.1.1
@@ -78,7 +78,7 @@ jobs:
           token_format: 'access_token'
           workload_identity_provider: projects/118785805795/locations/global/workloadIdentityPools/wif-test/providers/gitaction-test
           service_account: 'test-gcp@erudite-pod-391005.iam.gserviceaccount.com'
-          audience: 'https://github.com/qpqpqp1224/test'   
+          audience: 'https://github.com/qpqpqp1224/test_cd'   
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1.1.1
