@@ -40,6 +40,9 @@ jobs:
 
       - name: Use gcloud CLI
         run: gcloud info
+        
+      - name: Install Google Cloud Auth plugin
+        run: gcloud components install gke-gcloud-auth-plugin
       
       - name: Get Kubernetes config
         run: gcloud container clusters get-credentials test --region asia-northeast3 --project erudite-pod-391005
