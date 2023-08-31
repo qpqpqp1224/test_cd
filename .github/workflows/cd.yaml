@@ -7,7 +7,6 @@ on:
 env:
   CHART_PATH: helm-helloworld/
   RELEASE_NAME: helm-helloworld
-  NAMESPACE: helm-helloworld
 
 jobs:
   prepare:
