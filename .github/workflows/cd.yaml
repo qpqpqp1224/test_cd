@@ -95,8 +95,8 @@ jobs:
       - name: Upgrade the release
         run: |
           helm upgrade ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} \
-            --namespace ${{ env.NAMESPACE }} \
-            --install 
+          --namespace ${{ env.NAMESPACE }} \
+          --install 
 
       - name: List the upgrade result
         run: helm list --filter ${{ env.RELEASE_NAME }} --namespace ${{ env.NAMESPACE }}
