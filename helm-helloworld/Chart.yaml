@@ -1,4 +1,4 @@
-apiVersion: v1beta2
+apiVersion: v2
 appVersion: "1.0"
 description: A Helm chart for running demo app on Kubernetes
 name: helm-helloworld
