@@ -18,8 +18,9 @@ on:
 #asia-northeast3-docker.pkg.dev/erudite-pod-391005/test/test822-app
 env:
   CHART_PATH: helm-helloworld/
+  RESEASE_NAME: test-hello
   NAMESPACE: default
-
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   prepare:
