@@ -6,8 +6,8 @@ on:
 #asia-northeast3-docker.pkg.dev/erudite-pod-391005/test/test822-app
 env:
   CHART_PATH: helm-helloworld/
-  RELEASE_NAME: test-hello
-  NAMESPACE: default
+  RELEASE_NAME: helm-helloworld
+  NAMESPACE: helm-helloworld
 
 jobs:
   prepare:
