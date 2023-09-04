@@ -14,10 +14,23 @@ spec:
     metadata:
       labels:
         app: helm-helloworld
-    spec:
-      containers:
+        
+   containers:
         - name: helm-helloworld-container
           image: "asia-northeast3-docker.pkg.dev/erudite-pod-391005/test/test831-app:v1"
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+              
           env:
           - name: PRINT_VALUES
             value: {{.Values.printValues}}
