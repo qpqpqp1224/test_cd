@@ -25,6 +25,19 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: "test-gcp"
 
+frontendConfig:
+  enabled: false
+  name: ""
+  sslPolicy: ""
+
+backendConfig:
+  enabled: false
+  name: ""
+  healthCheck:
+    checkIntervalSec: 5
+    timeoutSec: 3
+    requestPath: /
+    
 service:
   type: ClusterIP
   port: 8080
