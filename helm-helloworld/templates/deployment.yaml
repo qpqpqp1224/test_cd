@@ -1,23 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helm-helloworld
+  name: {{ include "hello-world.fullname" . }}
   labels:
-    app: helm-helloworld
-    chart: helm-helloworld
+    {{- include "hello-world.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: helm-helloworld
+      {{- include "hello-world.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: helm-helloworld
-    spec:        
-     containers:
-        - name: helm-helloworld-container
-          image: "asia-northeast3-docker.pkg.dev/erudite-pod-391005/test/test831-app:v1"
+        {{- include "hello-world.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "hello-world.serviceAccountName" . }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 80
@@ -30,10 +31,3 @@ spec:
             httpGet:
               path: /
               port: http
-              
-          env:
-          - name: PRINT_VALUES
-            value: {{.Values.printValues}}
-          command: ["/bin/sh","-c"]
-          args: 
-          - while true; do echo $PRINT_VALUES; sleep 5; done;
