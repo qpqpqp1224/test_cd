@@ -23,8 +23,8 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-         resources:
-           {{- toYaml .Values.resources | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
             httpGet:
               path: /
