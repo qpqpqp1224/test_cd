@@ -8,13 +8,13 @@ printValues: "hello world!"
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: asia-northeast3-docker.pkg.dev/erudite-pod-391005/test/test831-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v1"
 
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "hello"
+fullnameOverride: "helloworld"
 
 serviceAccount:
   # Specifies whether a service account should be created
