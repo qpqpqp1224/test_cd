@@ -11,7 +11,7 @@ image:
   repository: asia-northeast3-docker.pkg.dev/erudite-pod-391005/test/test95-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v3"
+  tag: "v4"
 
 nameOverride: "hello"
 fullnameOverride: "helloworld"
