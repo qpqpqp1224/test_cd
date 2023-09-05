@@ -39,7 +39,7 @@ serviceAccount:
    # requestPath: /
 
   container:
-    port: 8080
+    port: 80
     protocol: TCP
   resources:
     limits:
