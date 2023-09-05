@@ -8,10 +8,10 @@
 replicaCount: 1
 
 image:
-  repository: asia-northeast3-docker.pkg.dev/erudite-pod-391005/test/test95-app
+  repository: asia-northeast3-docker.pkg.dev/erudite-pod-391005/test/test95
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v4"
+  tag: "v1"
 
 nameOverride: "hello"
 fullnameOverride: "helloworld"
