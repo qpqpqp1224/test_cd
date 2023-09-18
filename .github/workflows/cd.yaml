@@ -105,10 +105,10 @@ jobs:
         run: helm list --filter ${{ env.RELEASE_NAME }} --namespace ${{ env.NAMESPACE }}
 
       - name: Check Rollout status
-        run: Run kubectl rollout status deployment --namespace ${{ env.NAMESPACE }}
+        run: Run kubectl rollout status deployment ${{ env.RELEASE_NAME }} --namespace ${{ env.NAMESPACE }}
 
       - name: Check Rollout history
-        run: Run kubectl rollout history deployment --namespace ${{ env.NAMESPACE }}
+        run: Run kubectl rollout history deployment ${{ env.RELEASE_NAME }} --namespace ${{ env.NAMESPACE }}
 
       - name: Check pod status
         run: Run kubectl get pod --namespace ${{ env.NAMESPACE }} -o wide
