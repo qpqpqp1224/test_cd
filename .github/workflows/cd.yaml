@@ -111,5 +111,4 @@ jobs:
         run: Run kubectl rollout history deployment --namespace ${{ env.NAMESPACE }}
 
       - name: Check pod status
-        run: Run kubectl get pod --namespace ${{ env.NAMESPACE } -o wide
-
+        run: Run kubectl get pod --namespace ${{ env.NAMESPACE }} -o wide
