@@ -112,3 +112,4 @@ jobs:
 
       - name: Check pod status
         run: Run kubectl get pod --namespace ${{ env.NAMESPACE } -o wide
+
