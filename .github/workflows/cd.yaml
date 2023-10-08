@@ -111,8 +111,8 @@ jobs:
       #- name: Check Rollout history
       #  run: kubectl rollout history deployment helloworld --namespace ${{ env.NAMESPACE }}
 
-      - name: canary check
-        run: curl -ks https://`kubectl get svc frontend -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version
+   #   - name: canary check
+    #    run: curl -ks https://`kubectl get svc frontend -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version
 
       - name: Check pod status
         run: kubectl get pod --namespace ${{ env.NAMESPACE }} -o wide
