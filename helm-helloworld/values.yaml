@@ -8,10 +8,10 @@
 replicaCount: 3
 
 image:
-  repository: asia-northeast3-docker.pkg.dev/erudite-pod-391005/test/test95
+  repository: asia-northeast3-docker.pkg.dev/trans-shuttle-401410/test/test_canary
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2"
+  tag: "1.0.0"
 
 nameOverride: "hello"
 fullnameOverride: "helloworld"
@@ -23,7 +23,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: "test-gcp"
+  name: "serviceaccount_test"
 
 #frontendConfig:
  # enabled: false
@@ -65,7 +65,7 @@ ingress:
   annotations:
    #  kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-    kubernetes.io/ingress.global-static-ip-name: test-front-ip
+    kubernetes.io/ingress.global-static-ip-name: test
   path: /
 
 
