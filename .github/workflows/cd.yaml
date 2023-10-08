@@ -45,7 +45,7 @@ jobs:
         run: gcloud components install gke-gcloud-auth-plugin
       
       - name: Get Kubernetes config
-        run: gcloud container clusters get-credentials test --region asia-northeast3 --project erudite-pod-391005
+        run: gcloud container clusters get-credentials test --region asia-northeast3 --project trans-shuttle-401410
       
       - name: Examine the chart for possible issues    
         run: helm lint ${{ env.CHART_PATH }}
@@ -91,7 +91,7 @@ jobs:
         run: gcloud components install gke-gcloud-auth-plugin
 
       - name: Get Kubernetes config
-        run: gcloud container clusters get-credentials test --region asia-northeast3 --project erudite-pod-391005
+        run: gcloud container clusters get-credentials test --region asia-northeast3 --project trans-shuttle-401410
         
       - name: Examine the chart for possible issues          
         run: helm lint ${{ env.CHART_PATH }}
