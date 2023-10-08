@@ -79,8 +79,8 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           token_format: 'access_token'
-          workload_identity_provider: projects/118785805795/locations/global/workloadIdentityPools/wif-test/providers/gitaction-test
-          service_account: 'test-gcp@erudite-pod-391005.iam.gserviceaccount.com'
+          workload_identity_provider: projects/400645327499/locations/global/workloadIdentityPools/gitaction/providers/gitaction
+          service_account: 'serviceaccount-test@trans-shuttle-401410.iam.gserviceaccount.com'
           audience: 'https://github.com/qpqpqp1224/test_cd'   
 
       - name: Set up Cloud SDK
@@ -104,11 +104,14 @@ jobs:
       - name: List the upgrade result
         run: helm list --filter ${{ env.RELEASE_NAME }} --namespace ${{ env.NAMESPACE }}
 
-      - name: Check Rollout status
-        run: kubectl rollout status deployment helloworld --namespace ${{ env.NAMESPACE }}
+      #- name: Check Rollout status
+      #  run: kubectl rollout status deployment helloworld --namespace ${{ env.NAMESPACE }}
 
-      - name: Check Rollout history
-        run: kubectl rollout history deployment helloworld --namespace ${{ env.NAMESPACE }}
+      #- name: Check Rollout history
+      #  run: kubectl rollout history deployment helloworld --namespace ${{ env.NAMESPACE }}
+
+      - name: canary check
+        run: curl -ks https://`kubectl get svc frontend -o=jsonpath="{.status.loadBalancer.ingress[0].ip}"`/version
 
       - name: Check pod status
         run: kubectl get pod --namespace ${{ env.NAMESPACE }} -o wide
