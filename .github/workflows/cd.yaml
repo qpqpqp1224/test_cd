@@ -9,7 +9,7 @@ env:
   RELEASE_NAME: helm-helloworld
   NAMESPACE: default
   RELEASE_NAME_canary: hello-canary
-  NAMESPACE_canary: canary
+  NAMESPACE-canary: canary
 
 jobs:
   prepare:
@@ -57,8 +57,8 @@ jobs:
 
       - name: "[MANIFESTS] Dry-run the release"
         run: |
-          helm upgrade ${{ env.RELEASE_NAME_canary }} ${{ env.CHART_PATH }} \
-             --namespace ${{ env.NAMESPACE_canary }} \
+          helm upgrade ${{ env.RELEASE_NAME-canary }} ${{ env.CHART_PATH }} \
+             --namespace ${{ env.NAMESPACE-canary }} \
              --install
             # --dry-run
 
