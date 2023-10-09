@@ -4,7 +4,6 @@ metadata:
   name: {{ include "hello-world.fullname" . }}
   labels:
     {{- include "hello-world.labels" . | nindent 4 }}
-    track: canary
     version: {{default .Chart.AppVersion }}
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -16,6 +15,7 @@ spec:
   selector:
     matchLabels:
       {{- include "hello-world.selectorLabels" . | nindent 6 }}
+  replicas: 2
   template:
     metadata:
       labels:
