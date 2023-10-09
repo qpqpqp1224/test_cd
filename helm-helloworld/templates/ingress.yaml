@@ -3,8 +3,10 @@ apiVersion: networking.k8s.io/v1
 kind: Loadbalancer
 metadata:
   name: {{ include "hello-world.fullname" . }}
+  app: hello-canary
   annotations:
     {{- toYaml .Values.ingress.annotations | nindent 4 }}
+    app: hello-canary
 spec:
   rules:
     - host: {{ .Values.ingress.host }}
@@ -15,6 +17,7 @@ spec:
             backend:
               service:
                 name: {{ include "hello-world.fullname" . }}
+                app: hello-canary
                 port:
                   name: http
 {{- end -}}
