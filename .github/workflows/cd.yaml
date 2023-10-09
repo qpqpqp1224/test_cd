@@ -63,10 +63,10 @@ jobs:
             # --dry-run
 
       - name: Check Rollout status
-        run: kubectl rollout status deployment helloworld --namespace ${{ env.NAMESPACE }}
+        run: kubectl rollout status deployment helloworld --namespace ${{ env.NAMESPACE-canary }}
 
       - name: Check Rollout history
-        run: kubectl rollout history deployment helloworld --namespace ${{ env.NAMESPACE }}
+        run: kubectl rollout history deployment helloworld --namespace ${{ env.NAMESPACE-canary }}
 
       - name: Check pod status
         run: kubectl get pod --namespace ${{ env.NAMESPACE_canary }} -o wide
