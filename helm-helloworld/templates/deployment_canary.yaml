@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: hello-canary
   labels: hello-canary
-    track: canary
     version: {{default .Chart.AppVersion }}
 spec:
   replicas: 1
