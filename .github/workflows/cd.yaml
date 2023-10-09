@@ -52,11 +52,14 @@ jobs:
       - name: Examine the chart for possible issues    
         run: helm lint ${{ env.CHART_PATH }}
 
+      - name: create ns 
+        run: kubectl create namespace ${{ env.NAMESPACE_canary }}
+
       - name: "[MANIFESTS] Dry-run the release"
         run: |
           helm upgrade ${{ env.RELEASE_NAME_canary }} ${{ env.CHART_PATH }} \
              --namespace ${{ env.NAMESPACE_canary }} \
-             --install \
+             --install
             # --dry-run
 
       - name: Check Rollout status
