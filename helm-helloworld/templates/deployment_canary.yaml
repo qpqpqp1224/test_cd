@@ -2,25 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-canary
-  labels: 
-    hello-canary
-    version: {{default .Chart.AppVersion }}
+  labels:
+    app: hello-canary
 spec:
   replicas: 1
- # strategy:
- #   type: RollingUpdate
- #   rollingUpdate:
- #     maxSurge: 1
- #     maxUnavailable: 0
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxSurge: 1
+  #     maxUnavailable: 0
   selector:
-    matchLabels: 
-      hello-canary
+    matchLabels:
+      app: hello-canary
       release: hello-canary
-  replicas: 1
   template:
     metadata:
       labels:
-        selectorLabels: hello-canary
+        app: hello-canary
     spec:
       serviceAccountName: {{ include "hello-world.serviceAccountName" . }}
       containers:
