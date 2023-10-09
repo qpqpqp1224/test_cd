@@ -57,7 +57,7 @@ jobs:
 
       - name: "[MANIFESTS] Dry-run the release"
         run: |
-          helm upgrade ${{ env.RELEASE_NAME-canary }} ${{ env.CHART_PATH }} \
+          helm upgrade ${{ env.RELEASE_NAME_canary }} ${{ env.CHART_PATH }} \
              --namespace ${{ env.NAMESPACE-canary }} \
              --install
             # --dry-run
