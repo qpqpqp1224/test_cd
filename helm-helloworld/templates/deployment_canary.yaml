@@ -1,12 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-canary
+  name: {{ include "hello-world.fullnamecanary" . }}
   labels:
+    {{- include "hello-world.labels" . | nindent 4 }}
     track: canary
     version: {{default .Chart.AppVersion }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
  # strategy:
  #   type: RollingUpdate
  #   rollingUpdate:
@@ -14,6 +15,7 @@ spec:
  #     maxUnavailable: 0
   selector:
     matchLabels:
+      {{- include "hello-world.selectorLabels" . | nindent 6 }}
       release: hello-canary
   replicas: 1
   template:
