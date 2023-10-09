@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello_canary
+  name: hello-canary
   labels:
     track: canary
     version: {{default .Chart.AppVersion }}
@@ -14,16 +14,16 @@ spec:
  #     maxUnavailable: 0
   selector:
     matchLabels:
-      release: hello_canary
+      release: hello-canary
   replicas: 1
   template:
     metadata:
       labels:
-        selectorLabels: hello_canary
+        selectorLabels: hello-canary
     spec:
       serviceAccountName: {{ include "hello-world.serviceAccountName" . }}
       containers:
-        - name: {{ .Chart.Name }}_canary
+        - name: {{ .Chart.Name }}-canary
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
