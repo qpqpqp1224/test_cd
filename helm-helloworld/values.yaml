@@ -15,8 +15,6 @@ image:
 
 nameOverride: "hello"
 fullnameOverride: "helloworld"
-nameOverridecanary: "hello-canary"
-fullnameOverridecanary: "helloworld-canary"
 
 serviceAccount:
   # Specifies whether a service account should be created
