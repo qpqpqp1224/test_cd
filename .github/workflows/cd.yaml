@@ -8,6 +8,8 @@ env:
   CHART_PATH: helm-helloworld/
   RELEASE_NAME: helm-helloworld
   NAMESPACE: default
+  RELEASE_NAME_canary: hello-canary
+  NAMESPACE_canary: canary
 
 jobs:
   prepare:
@@ -52,10 +54,20 @@ jobs:
 
       - name: "[MANIFESTS] Dry-run the release"
         run: |
-          helm upgrade ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} \
-             --namespace ${{ env.NAMESPACE }} \
+          helm upgrade ${{ env.RELEASE_NAME_canary }} ${{ env.CHART_PATH }} \
+             --namespace ${{ env.NAMESPACE_canary }} \
              --install \
-             --dry-run
+            # --dry-run
+
+      - name: Check Rollout status
+        run: kubectl rollout status deployment helloworld --namespace ${{ env.NAMESPACE }}
+
+      - name: Check Rollout history
+        run: kubectl rollout history deployment helloworld --namespace ${{ env.NAMESPACE }}
+
+      - name: Check pod status
+        run: kubectl get pod --namespace ${{ env.NAMESPACE_canary }} -o wide
+
 
   deploy:
     needs: prepare
