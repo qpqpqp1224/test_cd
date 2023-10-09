@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hello-world.fullname" . }}
+  name: hello_canary
   labels:
-    {{- include "hello-world.labels" . | nindent 4 }}
+    track: canary
     version: {{default .Chart.AppVersion }}
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -14,16 +14,16 @@ spec:
  #     maxUnavailable: 0
   selector:
     matchLabels:
-      {{- include "hello-world.selectorLabels" . | nindent 6 }}
-  replicas: 2
+      release: hello_canary
+  replicas: 1
   template:
     metadata:
       labels:
-        {{- include "hello-world.selectorLabels" . | nindent 8 }}
+        selectorLabels: hello_canary
     spec:
       serviceAccountName: {{ include "hello-world.serviceAccountName" . }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Chart.Name }}_canary
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
