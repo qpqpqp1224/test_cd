@@ -12,7 +12,7 @@ env:
   NAMESPACE-canary: canary
 
 jobs:
-  prepare:
+  Canary:
     permissions:
       id-token: write
       contents: read
@@ -72,7 +72,7 @@ jobs:
         run: kubectl get pod --namespace ${{ env.NAMESPACE-canary }} -o wide
 
 
-  deploy:
+  Stable:
     needs: prepare
     permissions:
       id-token: write
