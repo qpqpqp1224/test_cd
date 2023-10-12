@@ -60,7 +60,7 @@ jobs:
           helm upgrade ${{ env.RELEASE_NAME_canary }} ${{ env.CHART_PATH }} \
              --namespace ${{ env.NAMESPACE-canary }} \
              --install
-            # --dry-run
+             --dry-run
 
       - name: Check Rollout status
         run: kubectl rollout status deployment --namespace ${{ env.NAMESPACE-canary }}
@@ -73,7 +73,7 @@ jobs:
 
 
   Stable:
-    needs: prepare
+    needs: Canary
     permissions:
       id-token: write
       contents: read
